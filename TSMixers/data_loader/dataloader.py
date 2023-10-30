@@ -5,6 +5,10 @@ from sklearn.preprocessing import StandardScaler
 import torch
 import torch.utils.data as data
 import pytorch_lightning as pl
+import torch.nn.functional as F
+from torch.utils.data import DataLoader
+
+
 import tensorflow as tf
 
 DATA_DIR = 'gs://time_series_datasets'
@@ -102,6 +106,8 @@ class TSFDataLoader(pl.LightningDataModule):
 
     def _make_dataloader(self, data, shuffle=True):
         data = np.array(data, dtype=np.float32)
-        dataset = data.TensorDataset(torch.tensor(data))
-        dataloader = data.DataLoader(dataset, batch_size=self.batch_size, shuffle=shuffle)
-        return dataloader
+        dataset = torch.tensor(data)
+        #dataloader = DataLoader(dataset, batch_size=self.batch_size, shuffle=shuffle)
+        #return dataloader
+        return DataLoader(dataset, batch_size=self.batch_size, shuffle=shuffle)
+
