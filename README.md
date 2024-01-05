@@ -5,7 +5,7 @@ Install the dependencies:
 ```
 pip install -r requirements.txt
 ```
-
+-m
 ## Dataset Preparation
 Using pre-processed datasets provided in [Autoformer](https://github.com/thuml/Autoformer).
 ```
