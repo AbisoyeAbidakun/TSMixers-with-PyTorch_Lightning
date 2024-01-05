@@ -29,5 +29,3 @@ class ResBlock(nn.Module):
         x = self.feature_linear(x)
         x = x + res
         return x
-
-
